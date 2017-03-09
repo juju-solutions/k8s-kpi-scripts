@@ -1,0 +1,97 @@
+#!/usr/bin/env python
+
+import yaml
+import urllib3
+import os
+import sys
+import logging
+
+from kpi_common import get_push_gateway
+
+from prometheus_client import CollectorRegistry, Gauge, push_to_gateway
+
+API_URL = "https://api.jujucharms.com/v5/{}/meta/stats"
+
+
+def gather_items_stats(registry, items, type='charm'):
+    """Gather statistics for a list of bundles."""
+    total_gauge_latest = Gauge(
+        'charmstore_ks_{}_latest_downloads_total'.format(type),
+        'Total number of latest revision downloads for a bundle'.format(type),
+        [type],
+        registry=registry,
+    )
+    week_gauge_latest = Gauge(
+        'charmstore_ks_{}_latest_downloads_week'.format(type),
+        'Total number of latest revision downloads for a {} (week)'.format(type),
+        [type],
+        registry=registry,
+    )
+    month_gauge_latest = Gauge(
+        'charmstore_ks_{}_latest_downloads_month'.format(type),
+        'Total number of latest revision downloads for a {} (month)'.format(type),
+        [type],
+        registry=registry,
+    )
+
+    total_gauge = Gauge(
+        'charmstore_ks_{}_downloads_total'.format(type),
+        'Total number of {} downloads for a {}'.format(type, type),
+        [type],
+        registry=registry,
+    )
+    week_gauge = Gauge(
+        'charmstore_ks_{}_downloads_week'.format(type),
+        'Total number of {} downloads for a {} (week)'.format(type, type),
+        [type],
+        registry=registry,
+    )
+    month_gauge = Gauge(
+        'charmstore_ks_{}_downloads_month'.format(type),
+        'Total number of {} downloads for a {} (month)'.format(type, type),
+        [type],
+        registry=registry,
+    )
+
+    http = urllib3.PoolManager()
+
+    for item in items:
+        url = API_URL.format(item)
+        stats = http.request('GET', url)
+        if stats.status == 200:
+            stats = yaml.load(stats.data)
+            total_gauge.labels(item).set(stats['ArchiveDownloadAllRevisions']['Total'])
+            week_gauge.labels(item).set(stats['ArchiveDownloadAllRevisions']['Week'])
+            month_gauge.labels(item).set(stats['ArchiveDownloadAllRevisions']['Month'])
+            total_gauge_latest.labels(item).set(stats['ArchiveDownload']['Total'])
+            week_gauge_latest.labels(item).set(stats['ArchiveDownload']['Week'])
+            month_gauge_latest.labels(item).set(stats['ArchiveDownload']['Month'])
+
+
+charms = [
+    '~containers/kubernetes-master',
+    '~containers/kubernetes-worker',
+    '~containers/kubeapi-load-balancer',
+    '~containers/etcd',
+    '~containers/flannel',
+    '~cynerva/calico',
+    '~containers/easyrsa',
+]
+
+bundles = [
+    'canonical-kubernetes',
+    'kubernetes-core',
+]
+
+if __name__ == "__main__":
+    pkg = 'k8s-kpi-scripts'
+    name = os.path.basename(sys.argv[0])
+    gateway = get_push_gateway(pkg, name)
+    logging.basicConfig(level=logging.DEBUG)
+
+    registry = CollectorRegistry()
+    try:
+        gather_items_stats(registry, charms, 'charm')
+        gather_items_stats(registry, bundles, 'bundle')
+    finally:
+        push_to_gateway(gateway, job=name, registry=registry)

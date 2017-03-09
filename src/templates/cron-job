@@ -1,0 +1,8 @@
+# This file is managed by the juju k8s-kpi-scripts charm.
+# Please do not edit here.
+
+1 * * * * {{user}} /bin/run-parts --verbose {{script_dir}} | logger -t {{script_name}}
+
+# cron will refuse to load a crontab that doesn't end in a newline, and
+# render() will swallow a trailing newline, so leave an empty line here:
+

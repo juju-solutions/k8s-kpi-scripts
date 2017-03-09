@@ -1,0 +1,5 @@
+options:
+  run-as:
+    default: 'ubuntu'
+    description: User as which to run the scripts
+    type: string

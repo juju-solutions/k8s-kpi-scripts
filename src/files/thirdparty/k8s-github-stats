@@ -1,0 +1,44 @@
+#!/usr/bin/env python
+
+import json
+import urllib3
+import os
+import sys
+import logging
+
+from kpi_common import get_push_gateway
+from prometheus_client import CollectorRegistry, Gauge, push_to_gateway
+
+API_URL = "https://api.github.com/search/issues?q=juju+user:kubernetes+repo:kubenrnetes+is:issue+is:{}"
+
+
+def gather_issue_stats(registry):
+    """Gather statistics for the open issues on github."""
+    states = ['open', 'closed', 'merged']
+    http = urllib3.PoolManager()
+    for state in states:
+        issues_gauge = Gauge(
+            'github_ks_issues_{}'.format(state),
+            'Number of {} issues on kubernetes github'.format(state),
+            ['issue'],
+            registry=registry,
+        )
+
+        url = API_URL.format(state)
+        stats = http.request('GET', url, headers={'User-Agent': 'ktsakalozos'})
+        if stats.status == 200:
+            stats = json.loads(stats.data)
+            issues_gauge.labels(state).set(stats['total_count'])
+
+
+if __name__ == "__main__":
+    pkg = 'k8s-kpi-scripts'
+    name = os.path.basename(sys.argv[0])
+    gateway = get_push_gateway(pkg, name)
+    logging.basicConfig(level=logging.DEBUG)
+
+    registry = CollectorRegistry()
+    try:
+        gather_issue_stats(registry)
+    finally:
+        push_to_gateway(gateway, job=name, registry=registry)
