@@ -2,7 +2,7 @@ name: k8s-kpi-scripts
 summary: Scripts to gather Kubernetes KPIs from external sources
 maintainers:
   - Canonical IS <root@admin.canonical.com>
-  - James Page <kos.tsakalozos@canonical.com>
+  - Konstantinos Tsakalozos <kos.tsakalozos@canonical.com>
 description: |
   Scripts to gather Kubernetes KPIs from external sources.
 tags:
