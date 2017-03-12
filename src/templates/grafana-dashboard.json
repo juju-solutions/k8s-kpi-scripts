@@ -6,7 +6,7 @@
   "gnetId": null,
   "graphTooltip": 0,
   "hideControls": false,
-  "id": 2,
+  "id": 1,
   "links": [],
   "rows": [
     {
@@ -922,6 +922,958 @@
       "showTitle": true,
       "title": "Charms",
       "titleSize": "h6"
+    },
+    {
+      "collapse": false,
+      "height": 198,
+      "panels": [
+        {
+          "cacheTimeout": null,
+          "colorBackground": false,
+          "colorValue": false,
+          "colors": [
+            "rgba(245, 54, 54, 0.9)",
+            "rgba(237, 129, 40, 0.89)",
+            "rgba(50, 172, 45, 0.97)"
+          ],
+          "datasource": "prometheus - Juju generated source",
+          "format": "none",
+          "gauge": {
+            "maxValue": 100,
+            "minValue": 0,
+            "show": false,
+            "thresholdLabels": false,
+            "thresholdMarkers": true
+          },
+          "id": 13,
+          "interval": null,
+          "links": [],
+          "mappingType": 1,
+          "mappingTypes": [
+            {
+              "name": "value to text",
+              "value": 1
+            },
+            {
+              "name": "range to text",
+              "value": 2
+            }
+          ],
+          "maxDataPoints": 100,
+          "nullPointMode": "connected",
+          "nullText": null,
+          "postfix": "",
+          "postfixFontSize": "50%",
+          "prefix": "",
+          "prefixFontSize": "50%",
+          "rangeMaps": [
+            {
+              "from": "null",
+              "text": "N/A",
+              "to": "null"
+            }
+          ],
+          "span": 3,
+          "sparkline": {
+            "fillColor": "rgba(31, 118, 189, 0.18)",
+            "full": false,
+            "lineColor": "rgb(31, 120, 193)",
+            "show": true
+          },
+          "targets": [
+            {
+              "expr": "live_ks_deployments_active",
+              "intervalFactor": 2,
+              "legendFormat": "",
+              "metric": "live_ks_deployments_active",
+              "refId": "A",
+              "step": 600
+            }
+          ],
+          "thresholds": "",
+          "title": "Active Deployments",
+          "type": "singlestat",
+          "valueFontSize": "80%",
+          "valueMaps": [
+            {
+              "op": "=",
+              "text": "N/A",
+              "value": "null"
+            }
+          ],
+          "valueName": "avg"
+        },
+        {
+          "aliasColors": {},
+          "bars": false,
+          "datasource": "prometheus - Juju generated source",
+          "fill": 1,
+          "id": 15,
+          "legend": {
+            "avg": false,
+            "current": false,
+            "max": false,
+            "min": false,
+            "show": true,
+            "total": false,
+            "values": false
+          },
+          "lines": true,
+          "linewidth": 1,
+          "links": [],
+          "nullPointMode": "connected",
+          "percentage": false,
+          "pointradius": 5,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [],
+          "span": 9,
+          "stack": true,
+          "steppedLine": false,
+          "targets": [
+            {
+              "expr": "live_ks_deployments_active_lxd",
+              "intervalFactor": 2,
+              "legendFormat": "LXD",
+              "metric": "live_ks_deployments_active_azure",
+              "refId": "A",
+              "step": 40
+            },
+            {
+              "expr": "live_ks_deployments_active_ec2",
+              "intervalFactor": 2,
+              "legendFormat": "AWS",
+              "metric": "live_ks_deployments_active_azure",
+              "refId": "B",
+              "step": 40
+            },
+            {
+              "expr": "live_ks_deployments_active_openstack",
+              "intervalFactor": 2,
+              "legendFormat": "Openstack",
+              "metric": "live_ks_deployments_active_azure",
+              "refId": "C",
+              "step": 40
+            },
+            {
+              "expr": "live_ks_deployments_active_azure",
+              "intervalFactor": 2,
+              "legendFormat": "Azure",
+              "metric": "live_ks_deployments_active_azure",
+              "refId": "D",
+              "step": 40
+            },
+            {
+              "expr": "live_ks_deployments_active_gce",
+              "intervalFactor": 2,
+              "legendFormat": "GCE",
+              "metric": "live_ks_deployments_active_azure",
+              "refId": "E",
+              "step": 40
+            },
+            {
+              "expr": "live_ks_deployments_active_maas",
+              "intervalFactor": 2,
+              "legendFormat": "MaaS",
+              "metric": "live_ks_deployments_active_azure",
+              "refId": "F",
+              "step": 40
+            },
+            {
+              "expr": "live_ks_deployments_active_manual",
+              "intervalFactor": 2,
+              "legendFormat": "Manual",
+              "metric": "live_ks_deployments_active_azure",
+              "refId": "G",
+              "step": 40
+            }
+          ],
+          "thresholds": [],
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "Active deployments (stacked)",
+          "tooltip": {
+            "shared": true,
+            "sort": 0,
+            "value_type": "individual"
+          },
+          "type": "graph",
+          "xaxis": {
+            "mode": "time",
+            "name": null,
+            "show": true,
+            "values": []
+          },
+          "yaxes": [
+            {
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            },
+            {
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            }
+          ]
+        }
+      ],
+      "repeat": null,
+      "repeatIteration": null,
+      "repeatRowId": null,
+      "showTitle": true,
+      "title": "Active deployments",
+      "titleSize": "h6"
+    },
+    {
+      "collapse": false,
+      "height": 219,
+      "panels": [
+        {
+          "aliasColors": {},
+          "bars": false,
+          "datasource": "prometheus - Juju generated source",
+          "fill": 1,
+          "id": 14,
+          "legend": {
+            "avg": false,
+            "current": false,
+            "max": false,
+            "min": false,
+            "show": true,
+            "total": false,
+            "values": false
+          },
+          "lines": true,
+          "linewidth": 1,
+          "links": [],
+          "nullPointMode": "connected",
+          "percentage": false,
+          "pointradius": 5,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [],
+          "span": 4,
+          "stack": true,
+          "steppedLine": false,
+          "targets": [
+            {
+              "expr": "live_ks_deployments_lxd_one_month",
+              "intervalFactor": 2,
+              "legendFormat": "LXD",
+              "metric": "live_ks_deployments_lxd_one_month",
+              "refId": "A",
+              "step": 60
+            },
+            {
+              "expr": "live_ks_deployments_ec2_one_month",
+              "intervalFactor": 2,
+              "legendFormat": "AWS",
+              "metric": "live_ks_deployments_active_azure",
+              "refId": "B",
+              "step": 60
+            },
+            {
+              "expr": "live_ks_deployments_openstack_one_month",
+              "intervalFactor": 2,
+              "legendFormat": "Openstack",
+              "metric": "live_ks_deployments_active_azure",
+              "refId": "C",
+              "step": 60
+            },
+            {
+              "expr": "live_ks_deployments_azure_one_month",
+              "intervalFactor": 2,
+              "legendFormat": "Azure",
+              "metric": "live_ks_deployments_active_azure",
+              "refId": "D",
+              "step": 60
+            },
+            {
+              "expr": "live_ks_deployments_gce_one_month",
+              "intervalFactor": 2,
+              "legendFormat": "GCE",
+              "metric": "live_ks_deployments_active_azure",
+              "refId": "E",
+              "step": 60
+            },
+            {
+              "expr": "live_ks_deployments_maas_one_month",
+              "intervalFactor": 2,
+              "legendFormat": "MaaS",
+              "metric": "live_ks_deployments_active_azure",
+              "refId": "F",
+              "step": 60
+            },
+            {
+              "expr": "live_ks_deployments_manual_one_month",
+              "intervalFactor": 2,
+              "legendFormat": "Manual",
+              "metric": "live_ks_deployments_active_azure",
+              "refId": "G",
+              "step": 60
+            }
+          ],
+          "thresholds": [],
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "Deployments last month (stacked)",
+          "tooltip": {
+            "shared": true,
+            "sort": 0,
+            "value_type": "individual"
+          },
+          "type": "graph",
+          "xaxis": {
+            "mode": "time",
+            "name": null,
+            "show": true,
+            "values": []
+          },
+          "yaxes": [
+            {
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            },
+            {
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            }
+          ]
+        },
+        {
+          "aliasColors": {},
+          "bars": false,
+          "datasource": "prometheus - Juju generated source",
+          "fill": 1,
+          "id": 16,
+          "legend": {
+            "avg": false,
+            "current": false,
+            "max": false,
+            "min": false,
+            "show": true,
+            "total": false,
+            "values": false
+          },
+          "lines": true,
+          "linewidth": 1,
+          "links": [],
+          "nullPointMode": "connected",
+          "percentage": false,
+          "pointradius": 5,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [],
+          "span": 4,
+          "stack": true,
+          "steppedLine": false,
+          "targets": [
+            {
+              "expr": "live_ks_deployments_lxd_three_months",
+              "intervalFactor": 2,
+              "legendFormat": "LXD",
+              "metric": "live_ks_deployments_lxd_one_month",
+              "refId": "A",
+              "step": 60
+            },
+            {
+              "expr": "live_ks_deployments_ec2_three_months",
+              "intervalFactor": 2,
+              "legendFormat": "AWS",
+              "metric": "live_ks_deployments_active_azure",
+              "refId": "B",
+              "step": 60
+            },
+            {
+              "expr": "live_ks_deployments_openstack_three_months",
+              "intervalFactor": 2,
+              "legendFormat": "Openstack",
+              "metric": "live_ks_deployments_active_azure",
+              "refId": "C",
+              "step": 60
+            },
+            {
+              "expr": "live_ks_deployments_azure_three_months",
+              "intervalFactor": 2,
+              "legendFormat": "Azure",
+              "metric": "live_ks_deployments_active_azure",
+              "refId": "D",
+              "step": 60
+            },
+            {
+              "expr": "live_ks_deployments_gce_three_months",
+              "intervalFactor": 2,
+              "legendFormat": "GCE",
+              "metric": "live_ks_deployments_active_azure",
+              "refId": "E",
+              "step": 60
+            },
+            {
+              "expr": "live_ks_deployments_maas_three_months",
+              "intervalFactor": 2,
+              "legendFormat": "MaaS",
+              "metric": "live_ks_deployments_active_azure",
+              "refId": "F",
+              "step": 60
+            },
+            {
+              "expr": "live_ks_deployments_manual_three_months",
+              "intervalFactor": 2,
+              "legendFormat": "Manual",
+              "metric": "live_ks_deployments_active_azure",
+              "refId": "G",
+              "step": 60
+            }
+          ],
+          "thresholds": [],
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "Deployments last 3 months (stacked)",
+          "tooltip": {
+            "shared": true,
+            "sort": 0,
+            "value_type": "individual"
+          },
+          "type": "graph",
+          "xaxis": {
+            "mode": "time",
+            "name": null,
+            "show": true,
+            "values": []
+          },
+          "yaxes": [
+            {
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            },
+            {
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            }
+          ]
+        },
+        {
+          "aliasColors": {},
+          "bars": false,
+          "datasource": "prometheus - Juju generated source",
+          "fill": 1,
+          "id": 17,
+          "legend": {
+            "avg": false,
+            "current": false,
+            "max": false,
+            "min": false,
+            "show": true,
+            "total": false,
+            "values": false
+          },
+          "lines": true,
+          "linewidth": 1,
+          "links": [],
+          "nullPointMode": "connected",
+          "percentage": false,
+          "pointradius": 5,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [],
+          "span": 4,
+          "stack": true,
+          "steppedLine": false,
+          "targets": [
+            {
+              "expr": "live_ks_deployments_lxd_six_months",
+              "intervalFactor": 2,
+              "legendFormat": "LXD",
+              "metric": "live_ks_deployments_lxd_one_month",
+              "refId": "A",
+              "step": 60
+            },
+            {
+              "expr": "live_ks_deployments_ec2_six_months",
+              "intervalFactor": 2,
+              "legendFormat": "AWS",
+              "metric": "live_ks_deployments_active_azure",
+              "refId": "B",
+              "step": 60
+            },
+            {
+              "expr": "live_ks_deployments_openstack_six_months",
+              "intervalFactor": 2,
+              "legendFormat": "Openstack",
+              "metric": "live_ks_deployments_active_azure",
+              "refId": "C",
+              "step": 60
+            },
+            {
+              "expr": "live_ks_deployments_azure_six_months",
+              "intervalFactor": 2,
+              "legendFormat": "Azure",
+              "metric": "live_ks_deployments_active_azure",
+              "refId": "D",
+              "step": 60
+            },
+            {
+              "expr": "live_ks_deployments_gce_six_months",
+              "intervalFactor": 2,
+              "legendFormat": "GCE",
+              "metric": "live_ks_deployments_active_azure",
+              "refId": "E",
+              "step": 60
+            },
+            {
+              "expr": "live_ks_deployments_maas_six_months",
+              "intervalFactor": 2,
+              "legendFormat": "MaaS",
+              "metric": "live_ks_deployments_active_azure",
+              "refId": "F",
+              "step": 60
+            },
+            {
+              "expr": "live_ks_deployments_manual_six_months",
+              "intervalFactor": 2,
+              "legendFormat": "Manual",
+              "metric": "live_ks_deployments_active_azure",
+              "refId": "G",
+              "step": 60
+            }
+          ],
+          "thresholds": [],
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "Deployments last month (stacked)",
+          "tooltip": {
+            "shared": true,
+            "sort": 0,
+            "value_type": "individual"
+          },
+          "type": "graph",
+          "xaxis": {
+            "mode": "time",
+            "name": null,
+            "show": true,
+            "values": []
+          },
+          "yaxes": [
+            {
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            },
+            {
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            }
+          ]
+        }
+      ],
+      "repeat": null,
+      "repeatIteration": null,
+      "repeatRowId": null,
+      "showTitle": true,
+      "title": "Total deployments over time",
+      "titleSize": "h6"
+    },
+    {
+      "collapse": false,
+      "height": 250,
+      "panels": [
+        {
+          "aliasColors": {},
+          "bars": false,
+          "datasource": "prometheus - Juju generated source",
+          "fill": 1,
+          "id": 18,
+          "legend": {
+            "avg": false,
+            "current": false,
+            "max": false,
+            "min": false,
+            "show": true,
+            "total": false,
+            "values": false
+          },
+          "lines": true,
+          "linewidth": 1,
+          "links": [],
+          "nullPointMode": "connected",
+          "percentage": false,
+          "pointradius": 5,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [],
+          "span": 4,
+          "stack": true,
+          "steppedLine": false,
+          "targets": [
+            {
+              "expr": "live_ks_deployments_longlasting_lxd_one_month",
+              "intervalFactor": 2,
+              "legendFormat": "LXD",
+              "metric": "live_ks_deployments_longlasting_azure_one_month",
+              "refId": "A",
+              "step": 60
+            },
+            {
+              "expr": "live_ks_deployments_longlasting_ec2_one_month",
+              "intervalFactor": 2,
+              "legendFormat": "AWS",
+              "metric": "live_ks_deployments_active_azure",
+              "refId": "B",
+              "step": 60
+            },
+            {
+              "expr": "live_ks_deployments_longlasting_openstack_one_month",
+              "intervalFactor": 2,
+              "legendFormat": "Openstack",
+              "metric": "live_ks_deployments_active_azure",
+              "refId": "C",
+              "step": 60
+            },
+            {
+              "expr": "live_ks_deployments_longlasting_azure_one_month",
+              "intervalFactor": 2,
+              "legendFormat": "Azure",
+              "metric": "live_ks_deployments_active_azure",
+              "refId": "D",
+              "step": 60
+            },
+            {
+              "expr": "live_ks_deployments_longlasting_gce_one_month",
+              "intervalFactor": 2,
+              "legendFormat": "GCE",
+              "metric": "live_ks_deployments_active_azure",
+              "refId": "E",
+              "step": 60
+            },
+            {
+              "expr": "live_ks_deployments_longlasting_maas_one_month",
+              "intervalFactor": 2,
+              "legendFormat": "MaaS",
+              "metric": "live_ks_deployments_active_azure",
+              "refId": "F",
+              "step": 60
+            },
+            {
+              "expr": "live_ks_deployments_longlasting_manual_one_month",
+              "intervalFactor": 2,
+              "legendFormat": "Manual",
+              "metric": "live_ks_deployments_active_azure",
+              "refId": "G",
+              "step": 60
+            }
+          ],
+          "thresholds": [],
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "Deployments last month - life span > 2 weeks (stacked)",
+          "tooltip": {
+            "shared": true,
+            "sort": 0,
+            "value_type": "individual"
+          },
+          "type": "graph",
+          "xaxis": {
+            "mode": "time",
+            "name": null,
+            "show": true,
+            "values": []
+          },
+          "yaxes": [
+            {
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            },
+            {
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            }
+          ]
+        },
+        {
+          "aliasColors": {},
+          "bars": false,
+          "datasource": "prometheus - Juju generated source",
+          "fill": 1,
+          "id": 19,
+          "legend": {
+            "avg": false,
+            "current": false,
+            "max": false,
+            "min": false,
+            "show": true,
+            "total": false,
+            "values": false
+          },
+          "lines": true,
+          "linewidth": 1,
+          "links": [],
+          "nullPointMode": "connected",
+          "percentage": false,
+          "pointradius": 5,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [],
+          "span": 4,
+          "stack": true,
+          "steppedLine": false,
+          "targets": [
+            {
+              "expr": "live_ks_deployments_longlasting_lxd_three_months",
+              "intervalFactor": 2,
+              "legendFormat": "LXD",
+              "metric": "live_ks_deployments_longlasting_azure_one_month",
+              "refId": "A",
+              "step": 60
+            },
+            {
+              "expr": "live_ks_deployments_longlasting_ec2_three_months",
+              "intervalFactor": 2,
+              "legendFormat": "AWS",
+              "metric": "live_ks_deployments_active_azure",
+              "refId": "B",
+              "step": 60
+            },
+            {
+              "expr": "live_ks_deployments_longlasting_openstack_three_months",
+              "intervalFactor": 2,
+              "legendFormat": "Openstack",
+              "metric": "live_ks_deployments_active_azure",
+              "refId": "C",
+              "step": 60
+            },
+            {
+              "expr": "live_ks_deployments_longlasting_azure_three_months",
+              "intervalFactor": 2,
+              "legendFormat": "Azure",
+              "metric": "live_ks_deployments_active_azure",
+              "refId": "D",
+              "step": 60
+            },
+            {
+              "expr": "live_ks_deployments_longlasting_gce_three_months",
+              "intervalFactor": 2,
+              "legendFormat": "GCE",
+              "metric": "live_ks_deployments_active_azure",
+              "refId": "E",
+              "step": 60
+            },
+            {
+              "expr": "live_ks_deployments_longlasting_maas_three_months",
+              "intervalFactor": 2,
+              "legendFormat": "MaaS",
+              "metric": "live_ks_deployments_active_azure",
+              "refId": "F",
+              "step": 60
+            },
+            {
+              "expr": "live_ks_deployments_longlasting_manual_three_months",
+              "intervalFactor": 2,
+              "legendFormat": "Manual",
+              "metric": "live_ks_deployments_active_azure",
+              "refId": "G",
+              "step": 60
+            }
+          ],
+          "thresholds": [],
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "Deployments last 3 months - life span > 2 weeks (stacked)",
+          "tooltip": {
+            "shared": true,
+            "sort": 0,
+            "value_type": "individual"
+          },
+          "type": "graph",
+          "xaxis": {
+            "mode": "time",
+            "name": null,
+            "show": true,
+            "values": []
+          },
+          "yaxes": [
+            {
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            },
+            {
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            }
+          ]
+        },
+        {
+          "aliasColors": {},
+          "bars": false,
+          "datasource": "prometheus - Juju generated source",
+          "fill": 1,
+          "id": 20,
+          "legend": {
+            "avg": false,
+            "current": false,
+            "max": false,
+            "min": false,
+            "show": true,
+            "total": false,
+            "values": false
+          },
+          "lines": true,
+          "linewidth": 1,
+          "links": [],
+          "nullPointMode": "connected",
+          "percentage": false,
+          "pointradius": 5,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [],
+          "span": 4,
+          "stack": true,
+          "steppedLine": false,
+          "targets": [
+            {
+              "expr": "live_ks_deployments_longlasting_lxd_six_months",
+              "intervalFactor": 2,
+              "legendFormat": "LXD",
+              "metric": "live_ks_deployments_longlasting_azure_one_month",
+              "refId": "A",
+              "step": 60
+            },
+            {
+              "expr": "live_ks_deployments_longlasting_ec2_six_months",
+              "intervalFactor": 2,
+              "legendFormat": "AWS",
+              "metric": "live_ks_deployments_active_azure",
+              "refId": "B",
+              "step": 60
+            },
+            {
+              "expr": "live_ks_deployments_longlasting_openstack_six_months",
+              "intervalFactor": 2,
+              "legendFormat": "Openstack",
+              "metric": "live_ks_deployments_active_azure",
+              "refId": "C",
+              "step": 60
+            },
+            {
+              "expr": "live_ks_deployments_longlasting_azure_six_months",
+              "intervalFactor": 2,
+              "legendFormat": "Azure",
+              "metric": "live_ks_deployments_active_azure",
+              "refId": "D",
+              "step": 60
+            },
+            {
+              "expr": "live_ks_deployments_longlasting_gce_six_months",
+              "intervalFactor": 2,
+              "legendFormat": "GCE",
+              "metric": "live_ks_deployments_active_azure",
+              "refId": "E",
+              "step": 60
+            },
+            {
+              "expr": "live_ks_deployments_longlasting_maas_six_months",
+              "intervalFactor": 2,
+              "legendFormat": "MaaS",
+              "metric": "live_ks_deployments_active_azure",
+              "refId": "F",
+              "step": 60
+            },
+            {
+              "expr": "live_ks_deployments_longlasting_manual_six_months",
+              "intervalFactor": 2,
+              "legendFormat": "Manual",
+              "metric": "live_ks_deployments_active_azure",
+              "refId": "G",
+              "step": 60
+            }
+          ],
+          "thresholds": [],
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "Deployments last six months - life span > 2 weeks (stacked)",
+          "tooltip": {
+            "shared": true,
+            "sort": 0,
+            "value_type": "individual"
+          },
+          "type": "graph",
+          "xaxis": {
+            "mode": "time",
+            "name": null,
+            "show": true,
+            "values": []
+          },
+          "yaxes": [
+            {
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            },
+            {
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            }
+          ]
+        }
+      ],
+      "repeat": null,
+      "repeatIteration": null,
+      "repeatRowId": null,
+      "showTitle": true,
+      "title": "Long lasting deployments over time",
+      "titleSize": "h6"
     }
   ],
   "schemaVersion": 14,
@@ -958,5 +1910,5 @@
   },
   "timezone": "browser",
   "title": "Kubernetes Stats",
-  "version": 20
+  "version": 7
 }

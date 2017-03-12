@@ -174,4 +174,8 @@ def install_files():
         'python-cssselect',
         'python-yaml',
         'python-urllib3',
+        'python3-dev',
+        'python-click',
+        'python-swiftclient',
+        'python-keystoneclient',
     ])

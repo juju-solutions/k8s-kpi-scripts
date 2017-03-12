@@ -1,0 +1,41 @@
+#!/bin/bash
+
+set -ex
+
+ITEMS=180
+
+mkdir -p /var/tmp/logs/api/1
+mkdir -p /var/tmp/logs/api/2
+
+source ~/.nova
+
+swift list production-juju-ps45-cdo-jujucharms-machine-1.canonical.com | grep 201 | grep api.jujucharms.com.log | tail -n $ITEMS > /var/tmp/logs/api/logs1.list
+swift list production-juju-ps45-cdo-jujucharms-machine-2.canonical.com | grep 201 | grep api.jujucharms.com.log | tail -n $ITEMS  > /var/tmp/logs/api/logs2.list
+echo "Downloading log files using get.sh"
+
+FILES=`cat /var/tmp/logs/api/logs1.list`
+cd /var/tmp/logs/api/1
+for f in $FILES
+do
+  echo "swift download $f"
+  if [ ! -f $f ]; then
+      swift download production-juju-ps45-cdo-jujucharms-machine-1.canonical.com $f
+  else
+      echo "File already available: $f"
+  fi
+done
+
+FILES=`cat /var/tmp/logs/api/logs2.list`
+cd /var/tmp/logs/api/2
+for f in $FILES
+do
+  echo "swift download $f"
+  if [ ! -f $f ]; then
+      swift download production-juju-ps45-cdo-jujucharms-machine-2.canonical.com $f
+  else
+      echo "File already available: $f"
+  fi
+done
+
+cd /srv/k8s-kpi-scripts/parts/
+python k8s-live-stats.py

@@ -3,10 +3,6 @@ import os
 import configparser
 import logging
 
-from launchpadlib.launchpad import Launchpad
-from launchpadlib.uris import lookup_service_root
-from launchpadlib import credentials
-
 from prometheus_client import Gauge
 
 
@@ -46,33 +42,6 @@ def get_config(pkg, name):
     ]
     config.read(conffiles)
     return config[name]
-
-
-class ShutUpAndTakeMyTokenAuthorizationEngine(credentials.RequestTokenAuthorizationEngine):
-
-    """This stub class prevents launchpadlib from nulling out consumer_name
-    in its demented campaign to force the use of desktop integration. """
-
-    def __init__(self, service_root, application_name=None, consumer_name=None,
-                 credential_save_failed=None, allow_access_levels=None):
-        super(ShutUpAndTakeMyTokenAuthorizationEngine, self).__init__(
-              service_root, application_name, consumer_name,
-              credential_save_failed)
-
-
-def launchpad_login(pkg):
-    """Log into Launchpad API with stored credentials."""
-    creds_dir = os.path.expanduser(os.path.join('~', '.' + pkg))
-    if not os.path.exists(creds_dir):
-        os.makedirs(creds_dir, 0o700)
-    os.chmod(creds_dir, 0o700)
-    api_endpoint = lookup_service_root('production')
-    return Launchpad.login_with(
-        application_name=pkg,
-        credentials_file=os.path.join(creds_dir, 'launchpad.credentials'),
-        service_root=api_endpoint,
-        version='devel',
-    )
 
 
 def count_distro_bugs(distro, package):
