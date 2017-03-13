@@ -7,7 +7,15 @@
   "graphTooltip": 0,
   "hideControls": false,
   "id": 1,
-  "links": [],
+  "links": [
+    {
+      "icon": "external link",
+      "tags": [],
+      "title": "Juju Containers Homepage",
+      "type": "link",
+      "url": "https://jujucharms.com/containers"
+    }
+  ],
   "rows": [
     {
       "collapse": false,
@@ -1910,5 +1918,5 @@
   },
   "timezone": "browser",
   "title": "Kubernetes Stats",
-  "version": 7
+  "version": 8
 }

@@ -15,3 +15,8 @@ requires:
   juju-info:
     scope: container
     interface: juju-info
+resources:
+  secrets:
+    type: file
+    filename: secrets.tar.gz
+    description: "A tarball packaging a .nova file with the cfg."

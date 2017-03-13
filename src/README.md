@@ -5,6 +5,9 @@ files/thirdparty/ on the local system and runs them from cron.
 
 This should be compiled with `charm build` from lp:~canonical-losas/canonical-is-charms/snappy-kpi-scripts-layer.
 
+This charm requires a tarball (tar.gz) containing a .nova file with the
+connection configuration to nova storage.
+
 # References
 
 - https://code.launchpad.net/~canonical-losas/canonical-is-charms/snappy-kpi-scripts/

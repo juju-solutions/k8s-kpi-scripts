@@ -29,8 +29,10 @@ from charms.reactive.decorators import (
     when_not,
 )
 
-from charmhelpers.fetch import apt_install
+from subprocess import check_call
+from shlex import split
 
+from charmhelpers.fetch import apt_install
 from charmhelpers.core.templating import render
 
 
@@ -103,6 +105,29 @@ def write_cron_job():
     'push_gateway.configured',
 )
 def write_config():
+    '''Unpack secrets files and configure the charm.'''
+    try:
+        archive = hookenv.resource_get('secrets')
+    except Exception:
+        message = 'Error fetching the secrets resource.'
+        blocked(message)
+        return
+
+    if not archive:
+        blocked('Missing secrets resource.')
+        return
+
+    # Handle null resource publication, we check if filesize < 1mb
+    filesize = os.stat(archive).st_size
+    if filesize <= 1:
+        blocked('Incomplete secrets resource.')
+        return
+
+    command = 'tar -xvzf {0} -C {1}'.format(archive, "/home/ubuntu")
+    hookenv.log(command)
+    check_call(split(command))
+
+
     blocked('Unable to configure charm - please see log')
     push_gateway = write_config_file()
     write_cron_job()
