@@ -10,7 +10,7 @@ from kpi_common import get_push_gateway
 
 from prometheus_client import CollectorRegistry, Gauge, push_to_gateway
 
-API_URL = "https://api.jujucharms.com/v5/{}/meta/stats"
+API_URL = "https://api.jujucharms.com/charmstore/v5/{}/meta/stats"
 
 
 def gather_items_stats(registry, items, type='charm'):

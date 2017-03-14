@@ -127,7 +127,6 @@ def write_config():
     hookenv.log(command)
     check_call(split(command))
 
-
     blocked('Unable to configure charm - please see log')
     push_gateway = write_config_file()
     write_cron_job()

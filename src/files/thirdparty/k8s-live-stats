@@ -38,4 +38,4 @@ do
 done
 
 cd /srv/k8s-kpi-scripts/parts/
-python k8s-live-stats.py
+python -u k8s-live-stats.py

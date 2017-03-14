@@ -175,8 +175,6 @@ def main():
                         continue
 
                     if uuid not in apps:
-                        data = find_metadata(l, datestr)
-                        # print(data)
                         apps[uuid] = data
                     else:
                         data = apps[uuid]
