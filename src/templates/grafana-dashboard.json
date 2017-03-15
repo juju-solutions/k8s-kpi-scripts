@@ -19,7 +19,7 @@
   "rows": [
     {
       "collapse": false,
-      "height": 146,
+      "height": 199,
       "panels": [
         {
           "cacheTimeout": null,
@@ -75,7 +75,7 @@
               "to": "null"
             }
           ],
-          "span": 3,
+          "span": 2,
           "sparkline": {
             "fillColor": "rgba(31, 118, 189, 0.18)",
             "full": false,
@@ -159,7 +159,7 @@
               "to": "null"
             }
           ],
-          "span": 3,
+          "span": 2,
           "sparkline": {
             "fillColor": "rgba(31, 118, 189, 0.18)",
             "full": false,
@@ -243,7 +243,7 @@
               "to": "null"
             }
           ],
-          "span": 3,
+          "span": 2,
           "sparkline": {
             "fillColor": "rgba(31, 118, 189, 0.18)",
             "full": false,
@@ -358,6 +358,16 @@
               "show": true
             }
           ]
+        },
+        {
+          "content": "## Issues\n\nIssues as reported on github. Click on the panel to navigate to the issues page.  ",
+          "id": 21,
+          "links": [],
+          "mode": "markdown",
+          "span": 3,
+          "title": "",
+          "transparent": true,
+          "type": "text"
         }
       ],
       "repeat": null,
@@ -402,7 +412,7 @@
               "yaxis": 1
             }
           ],
-          "span": 4,
+          "span": 3,
           "stack": false,
           "steppedLine": false,
           "targets": [
@@ -412,7 +422,7 @@
               "legendFormat": "{{bundle}}",
               "metric": "charmstore_ks_bundle_downloads_week",
               "refId": "A",
-              "step": 30
+              "step": 60
             }
           ],
           "thresholds": [
@@ -489,7 +499,7 @@
               "yaxis": 1
             }
           ],
-          "span": 4,
+          "span": 3,
           "stack": false,
           "steppedLine": false,
           "targets": [
@@ -499,7 +509,7 @@
               "legendFormat": "{{bundle}}",
               "metric": "",
               "refId": "A",
-              "step": 30
+              "step": 60
             }
           ],
           "thresholds": [
@@ -576,7 +586,7 @@
               "yaxis": 1
             }
           ],
-          "span": 4,
+          "span": 3,
           "stack": false,
           "steppedLine": false,
           "targets": [
@@ -586,7 +596,7 @@
               "legendFormat": "{{bundle}}",
               "metric": "charmstore_ks_bundle_downloads_month",
               "refId": "A",
-              "step": 30
+              "step": 60
             }
           ],
           "thresholds": [
@@ -633,6 +643,16 @@
               "show": true
             }
           ]
+        },
+        {
+          "content": "## Bundle Deployemnts\n\nThe amount of Kubernetes bundles deployed reported by the charmstore. We show the number of deployments in the period of the last one and three months as well as the total number of deployments. ",
+          "id": 22,
+          "links": [],
+          "mode": "markdown",
+          "span": 3,
+          "title": "",
+          "transparent": true,
+          "type": "text"
         }
       ],
       "repeat": null,
@@ -644,7 +664,7 @@
     },
     {
       "collapse": false,
-      "height": 251,
+      "height": 280,
       "panels": [
         {
           "aliasColors": {},
@@ -677,7 +697,7 @@
               "yaxis": 1
             }
           ],
-          "span": 6,
+          "span": 4,
           "stack": false,
           "steppedLine": false,
           "targets": [
@@ -772,7 +792,7 @@
               "yaxis": 1
             }
           ],
-          "span": 6,
+          "span": 5,
           "stack": false,
           "steppedLine": false,
           "targets": [
@@ -835,6 +855,16 @@
               "show": false
             }
           ]
+        },
+        {
+          "content": "## Latest vs all revisions\n\nBy plotting the number of deployments of the latest revision and all revisions you can see the adoption the latest release of the charms has. These metrics are reported by the charmstore. ",
+          "id": 23,
+          "links": [],
+          "mode": "markdown",
+          "span": 3,
+          "title": "",
+          "transparent": true,
+          "type": "text"
         }
       ],
       "repeat": null,
@@ -846,7 +876,7 @@
     },
     {
       "collapse": false,
-      "height": 405,
+      "height": 400,
       "panels": [
         {
           "aliasColors": {},
@@ -873,7 +903,7 @@
           "points": false,
           "renderer": "flot",
           "seriesOverrides": [],
-          "span": 12,
+          "span": 9,
           "stack": false,
           "steppedLine": false,
           "targets": [
@@ -922,6 +952,16 @@
               "show": true
             }
           ]
+        },
+        {
+          "content": "## Charm deployments\n\nNumber of deployments for each Kubernetes charm in the last week as reported by the charmstore.",
+          "id": 24,
+          "links": [],
+          "mode": "markdown",
+          "span": 3,
+          "title": "",
+          "transparent": true,
+          "type": "text"
         }
       ],
       "repeat": null,
@@ -933,7 +973,7 @@
     },
     {
       "collapse": false,
-      "height": 198,
+      "height": 220,
       "panels": [
         {
           "cacheTimeout": null,
@@ -1009,7 +1049,7 @@
               "value": "null"
             }
           ],
-          "valueName": "avg"
+          "valueName": "current"
         },
         {
           "aliasColors": {},
@@ -1035,7 +1075,7 @@
           "points": false,
           "renderer": "flot",
           "seriesOverrides": [],
-          "span": 9,
+          "span": 6,
           "stack": true,
           "steppedLine": false,
           "targets": [
@@ -1130,6 +1170,16 @@
               "show": true
             }
           ]
+        },
+        {
+          "content": "## Active Deployments\n\nThis metric, gathered from the charmstore logs, shown how many deployments were active yesterday.  ",
+          "id": 25,
+          "links": [],
+          "mode": "markdown",
+          "span": 3,
+          "title": "",
+          "transparent": true,
+          "type": "text"
         }
       ],
       "repeat": null,
@@ -1167,7 +1217,7 @@
           "points": false,
           "renderer": "flot",
           "seriesOverrides": [],
-          "span": 4,
+          "span": 3,
           "stack": true,
           "steppedLine": false,
           "targets": [
@@ -1287,7 +1337,7 @@
           "points": false,
           "renderer": "flot",
           "seriesOverrides": [],
-          "span": 4,
+          "span": 3,
           "stack": true,
           "steppedLine": false,
           "targets": [
@@ -1407,7 +1457,7 @@
           "points": false,
           "renderer": "flot",
           "seriesOverrides": [],
-          "span": 4,
+          "span": 3,
           "stack": true,
           "steppedLine": false,
           "targets": [
@@ -1502,6 +1552,16 @@
               "show": true
             }
           ]
+        },
+        {
+          "content": "## Total number of deployments\n\nHere we show the number of deployments of the kubernetes-master charm throughout different time windows. The metrics are gathered from the charmstore logs. ",
+          "id": 26,
+          "links": [],
+          "mode": "markdown",
+          "span": 3,
+          "title": "",
+          "transparent": true,
+          "type": "text"
         }
       ],
       "repeat": null,
@@ -1539,7 +1599,7 @@
           "points": false,
           "renderer": "flot",
           "seriesOverrides": [],
-          "span": 4,
+          "span": 3,
           "stack": true,
           "steppedLine": false,
           "targets": [
@@ -1659,7 +1719,7 @@
           "points": false,
           "renderer": "flot",
           "seriesOverrides": [],
-          "span": 4,
+          "span": 3,
           "stack": true,
           "steppedLine": false,
           "targets": [
@@ -1779,7 +1839,7 @@
           "points": false,
           "renderer": "flot",
           "seriesOverrides": [],
-          "span": 4,
+          "span": 3,
           "stack": true,
           "steppedLine": false,
           "targets": [
@@ -1874,6 +1934,16 @@
               "show": true
             }
           ]
+        },
+        {
+          "content": "## Long lasting deployments\n\nSame as above only this time we plot the deployments that are up and running for a period longer than two weeks. The metrics are gathered from the charmstore logs. ",
+          "id": 27,
+          "links": [],
+          "mode": "markdown",
+          "span": 3,
+          "title": "",
+          "transparent": true,
+          "type": "text"
         }
       ],
       "repeat": null,
@@ -1918,5 +1988,5 @@
   },
   "timezone": "browser",
   "title": "Kubernetes Stats",
-  "version": 8
+  "version": 12
 }
