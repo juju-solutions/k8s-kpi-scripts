@@ -1,2 +1,2 @@
 includes: ['layer:basic', 'interface:juju-info']
-repo: 'https://code.launchpad.net/~canonical-losas/canonical-is-charms/snappy-kpi-scripts'
+repo: 'https://github.com/juju-solutions/k8s-kpi-scripts'
