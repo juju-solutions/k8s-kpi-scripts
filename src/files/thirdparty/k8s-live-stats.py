@@ -18,7 +18,7 @@ logs = [
     glob.glob('/var/tmp/logs/api/2/api.jujucharms.com.log-201*'),
 ]
 
-clouds = ['maas', 'ec2', 'azure', 'gce', 'lxd', 'openstack', 'manual']
+clouds = ['maas', 'ec2', 'azure', 'gce', 'lxd', 'openstack', 'manual', 'vsphere']
 
 app_id = 'cs%3A~containers%2Fkubernetes-master'
 
