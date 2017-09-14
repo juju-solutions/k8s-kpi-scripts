@@ -164,8 +164,11 @@ def main():
                 replace('.anon', '').\
                 replace('.gz', '')
             print("Date {}".format(datestr))
-            with gzip.open(path) as f:
-                lines = f.read().split("\n")
+            try:
+                with gzip.open(path) as f:
+                    lines = f.read().split("\n")
+            except IOError:
+                print("Corrupted. Skipping date {}".format(datestr))
 
             for l in lines:
                 uuid = find_uuid(l)
