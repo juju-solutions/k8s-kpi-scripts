@@ -74,13 +74,14 @@ charms = [
     '~containers/kubeapi-load-balancer',
     '~containers/etcd',
     '~containers/flannel',
-    '~cynerva/calico',
+    '~containers/canal',
     '~containers/easyrsa',
 ]
 
 bundles = [
     'canonical-kubernetes',
     'kubernetes-core',
+    'canonical-kubernetes-canal',
 ]
 
 if __name__ == "__main__":
