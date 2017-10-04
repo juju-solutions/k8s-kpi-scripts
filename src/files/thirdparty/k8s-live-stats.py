@@ -18,7 +18,7 @@ logs = [
     glob.glob('/var/tmp/logs/api/2/api.jujucharms.com.log-201*'),
 ]
 
-clouds = ['maas', 'ec2', 'azure', 'gce', 'lxd', 'openstack', 'manual']
+clouds = ['maas', 'ec2', 'azure', 'gce', 'lxd', 'openstack', 'manual', 'vsphere']
 
 app_id = 'cs%3A~containers%2Fkubernetes-master'
 
@@ -164,8 +164,11 @@ def main():
                 replace('.anon', '').\
                 replace('.gz', '')
             print("Date {}".format(datestr))
-            with gzip.open(path) as f:
-                lines = f.read().split("\n")
+            try:
+                with gzip.open(path) as f:
+                    lines = f.read().split("\n")
+            except IOError:
+                print("Corrupted. Skipping date {}".format(datestr))
 
             for l in lines:
                 uuid = find_uuid(l)

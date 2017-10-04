@@ -1,12 +1,54 @@
 {
+  "__inputs": [
+    {
+      "name": "DS_PROMETHEUS_- JUJU GENERATED SOURCE",
+      "label": "prometheus - Juju generated source",
+      "description": "",
+      "type": "datasource",
+      "pluginId": "prometheus",
+      "pluginName": "Prometheus"
+    }
+  ],
+  "__requires": [
+    {
+      "type": "grafana",
+      "id": "grafana",
+      "name": "Grafana",
+      "version": "4.1.2"
+    },
+    {
+      "type": "panel",
+      "id": "graph",
+      "name": "Graph",
+      "version": ""
+    },
+    {
+      "type": "datasource",
+      "id": "prometheus",
+      "name": "Prometheus",
+      "version": "1.0.0"
+    },
+    {
+      "type": "panel",
+      "id": "singlestat",
+      "name": "Singlestat",
+      "version": ""
+    },
+    {
+      "type": "panel",
+      "id": "text",
+      "name": "Text",
+      "version": ""
+    }
+  ],
   "annotations": {
     "list": []
   },
   "editable": true,
   "gnetId": null,
   "graphTooltip": 0,
-  "hideControls": false,
-  "id": 1,
+  "hideControls": true,
+  "id": null,
   "links": [
     {
       "icon": "external link",
@@ -30,7 +72,7 @@
             "rgba(237, 129, 40, 0.89)",
             "rgba(50, 172, 45, 0.97)"
           ],
-          "datasource": "prometheus - Juju generated source",
+          "datasource": "${DS_PROMETHEUS_- JUJU GENERATED SOURCE}",
           "format": "none",
           "gauge": {
             "maxValue": 100,
@@ -47,7 +89,7 @@
               "targetBlank": true,
               "title": "Issues on Github",
               "type": "absolute",
-              "url": "https://github.com/search?utf8=%E2%9C%93&q=org%3Akubernetes+is%3Aissue+is%3Aopen+juju+&type=Issues&ref=searchresults"
+              "url": "https://github.com/juju-solutions/bundle-canonical-kubernetes/issues?q=is%3Aopen+is%3Aissue"
             }
           ],
           "mappingType": 1,
@@ -89,10 +131,12 @@
               "legendFormat": "",
               "metric": "github_ks_issues_open",
               "refId": "A",
-              "step": 600
+              "step": 43200
             }
           ],
           "thresholds": "",
+          "timeFrom": "28d",
+          "timeShift": null,
           "title": "Open Issues on Github",
           "type": "singlestat",
           "valueFontSize": "80%",
@@ -114,7 +158,7 @@
             "rgba(237, 129, 40, 0.89)",
             "rgba(50, 172, 45, 0.97)"
           ],
-          "datasource": "prometheus - Juju generated source",
+          "datasource": "${DS_PROMETHEUS_- JUJU GENERATED SOURCE}",
           "format": "none",
           "gauge": {
             "maxValue": 100,
@@ -131,7 +175,7 @@
               "targetBlank": true,
               "title": "Issues on Github",
               "type": "absolute",
-              "url": "https://github.com/search?utf8=%E2%9C%93&q=org%3Akubernetes+is%3Aissue+is%3Aclosed+juju+&type=Issues&ref=searchresults"
+              "url": "https://github.com/juju-solutions/bundle-canonical-kubernetes/issues?q=is%3Aissue+is%3Aclosed"
             }
           ],
           "mappingType": 1,
@@ -173,95 +217,13 @@
               "legendFormat": "",
               "metric": "github_ks_issues_open",
               "refId": "A",
-              "step": 600
+              "step": 43200
             }
           ],
           "thresholds": "",
+          "timeFrom": "28d",
+          "timeShift": null,
           "title": "Closed  Issues on Github",
-          "type": "singlestat",
-          "valueFontSize": "80%",
-          "valueMaps": [
-            {
-              "op": "=",
-              "text": "N/A",
-              "value": "null"
-            }
-          ],
-          "valueName": "current"
-        },
-        {
-          "cacheTimeout": null,
-          "colorBackground": false,
-          "colorValue": false,
-          "colors": [
-            "rgba(245, 54, 54, 0.9)",
-            "rgba(237, 129, 40, 0.89)",
-            "rgba(50, 172, 45, 0.97)"
-          ],
-          "datasource": "prometheus - Juju generated source",
-          "format": "none",
-          "gauge": {
-            "maxValue": 100,
-            "minValue": 0,
-            "show": false,
-            "thresholdLabels": false,
-            "thresholdMarkers": true
-          },
-          "id": 11,
-          "interval": null,
-          "links": [
-            {
-              "params": "",
-              "targetBlank": true,
-              "title": "Issues on Github",
-              "type": "absolute",
-              "url": "https://github.com/search?utf8=%E2%9C%93&q=org%3Akubernetes+is%3Aissue+is%3Amerged+juju+&type=Issues&ref=searchresults"
-            }
-          ],
-          "mappingType": 1,
-          "mappingTypes": [
-            {
-              "name": "value to text",
-              "value": 1
-            },
-            {
-              "name": "range to text",
-              "value": 2
-            }
-          ],
-          "maxDataPoints": 100,
-          "nullPointMode": "connected",
-          "nullText": null,
-          "postfix": "",
-          "postfixFontSize": "50%",
-          "prefix": "",
-          "prefixFontSize": "50%",
-          "rangeMaps": [
-            {
-              "from": "null",
-              "text": "N/A",
-              "to": "null"
-            }
-          ],
-          "span": 2,
-          "sparkline": {
-            "fillColor": "rgba(31, 118, 189, 0.18)",
-            "full": false,
-            "lineColor": "rgb(31, 120, 193)",
-            "show": true
-          },
-          "targets": [
-            {
-              "expr": "github_ks_issues_merged",
-              "intervalFactor": 2,
-              "legendFormat": "",
-              "metric": "github_ks_issues_open",
-              "refId": "A",
-              "step": 600
-            }
-          ],
-          "thresholds": "",
-          "title": "Merged Issues on Github",
           "type": "singlestat",
           "valueFontSize": "80%",
           "valueMaps": [
@@ -276,7 +238,7 @@
         {
           "aliasColors": {},
           "bars": false,
-          "datasource": "prometheus - Juju generated source",
+          "datasource": "${DS_PROMETHEUS_- JUJU GENERATED SOURCE}",
           "fill": 1,
           "id": 12,
           "legend": {
@@ -297,7 +259,7 @@
           "points": false,
           "renderer": "flot",
           "seriesOverrides": [],
-          "span": 3,
+          "span": 5,
           "stack": false,
           "steppedLine": false,
           "targets": [
@@ -307,25 +269,18 @@
               "legendFormat": "Opened",
               "metric": "github_ks_issues_open",
               "refId": "A",
-              "step": 120
+              "step": 7200
             },
             {
               "expr": "github_ks_issues_closed",
               "intervalFactor": 2,
               "legendFormat": "Closed",
               "refId": "B",
-              "step": 120
-            },
-            {
-              "expr": "github_ks_issues_merged",
-              "intervalFactor": 2,
-              "legendFormat": "Merged",
-              "refId": "C",
-              "step": 120
+              "step": 7200
             }
           ],
           "thresholds": [],
-          "timeFrom": null,
+          "timeFrom": "28d",
           "timeShift": null,
           "title": "Issues",
           "tooltip": {
@@ -360,7 +315,7 @@
           ]
         },
         {
-          "content": "## Issues\n\nIssues as reported on github. Click on the panel to navigate to the issues page.  ",
+          "content": "## Issues\n\nIssues as reported on github at https://github.com/juju-solutions/bundle-canonical-kubernetes/issues ",
           "id": 21,
           "links": [],
           "mode": "markdown",
@@ -384,7 +339,7 @@
         {
           "aliasColors": {},
           "bars": false,
-          "datasource": "prometheus - Juju generated source",
+          "datasource": "${DS_PROMETHEUS_- JUJU GENERATED SOURCE}",
           "description": "Weekly downloads of bundles",
           "fill": 1,
           "id": 1,
@@ -422,7 +377,7 @@
               "legendFormat": "{{bundle}}",
               "metric": "charmstore_ks_bundle_downloads_week",
               "refId": "A",
-              "step": 60
+              "step": 3600
             }
           ],
           "thresholds": [
@@ -434,7 +389,7 @@
               "value": null
             }
           ],
-          "timeFrom": null,
+          "timeFrom": "28d",
           "timeShift": null,
           "title": "Weekly Bundles Downloads",
           "tooltip": {
@@ -471,7 +426,7 @@
         {
           "aliasColors": {},
           "bars": false,
-          "datasource": "prometheus - Juju generated source",
+          "datasource": "${DS_PROMETHEUS_- JUJU GENERATED SOURCE}",
           "description": "Monthly downloads of bundles",
           "fill": 1,
           "id": 2,
@@ -509,7 +464,7 @@
               "legendFormat": "{{bundle}}",
               "metric": "",
               "refId": "A",
-              "step": 60
+              "step": 3600
             }
           ],
           "thresholds": [
@@ -521,7 +476,7 @@
               "value": null
             }
           ],
-          "timeFrom": null,
+          "timeFrom": "28d",
           "timeShift": null,
           "title": "Monthly Bundles Downloads",
           "tooltip": {
@@ -558,7 +513,7 @@
         {
           "aliasColors": {},
           "bars": true,
-          "datasource": "prometheus - Juju generated source",
+          "datasource": "${DS_PROMETHEUS_- JUJU GENERATED SOURCE}",
           "description": "Total downloads of bundles",
           "fill": 1,
           "id": 3,
@@ -568,7 +523,7 @@
             "current": false,
             "max": false,
             "min": false,
-            "show": false,
+            "show": true,
             "total": false,
             "values": false
           },
@@ -620,7 +575,7 @@
           "xaxis": {
             "mode": "series",
             "name": null,
-            "show": true,
+            "show": false,
             "values": [
               "current"
             ]
@@ -645,7 +600,7 @@
           ]
         },
         {
-          "content": "## Bundle Deployemnts\n\nThe amount of Kubernetes bundles deployed reported by the charmstore. We show the number of deployments in the period of the last one and three months as well as the total number of deployments. ",
+          "content": "## Bundle Deployemnts\n\nThe amount of Kubernetes bundles deployed reported by the charmstore. We show the number of deployments in the period of the last one and three months as well as the total number of deployments.  (As reported by the Store on https://api.jujucharms.com/charmstore/v5/<charm-or-bundle>/meta/stats)",
           "id": 22,
           "links": [],
           "mode": "markdown",
@@ -669,7 +624,7 @@
         {
           "aliasColors": {},
           "bars": false,
-          "datasource": "prometheus - Juju generated source",
+          "datasource": "${DS_PROMETHEUS_- JUJU GENERATED SOURCE}",
           "description": "Weekly adoption of bundles",
           "fill": 1,
           "id": 5,
@@ -707,7 +662,7 @@
               "legendFormat": "All revisions of {{bundle}}",
               "metric": "",
               "refId": "A",
-              "step": 30
+              "step": 3600
             },
             {
               "expr": "charmstore_ks_bundle_latest_downloads_week",
@@ -715,7 +670,7 @@
               "legendFormat": "Latest revision of  {{bundle}}",
               "metric": "charmstore_k8s_charm_latest_downloads_total",
               "refId": "B",
-              "step": 60
+              "step": 7200
             }
           ],
           "thresholds": [
@@ -727,7 +682,7 @@
               "value": null
             }
           ],
-          "timeFrom": null,
+          "timeFrom": "28d",
           "timeShift": null,
           "title": "Weekly adoption of bundles",
           "tooltip": {
@@ -764,7 +719,7 @@
         {
           "aliasColors": {},
           "bars": false,
-          "datasource": "prometheus - Juju generated source",
+          "datasource": "${DS_PROMETHEUS_- JUJU GENERATED SOURCE}",
           "description": "Monthly adoption of bundles",
           "fill": 1,
           "id": 7,
@@ -802,7 +757,7 @@
               "legendFormat": "All revisions of {{bundle}}",
               "metric": "",
               "refId": "A",
-              "step": 30
+              "step": 3600
             },
             {
               "expr": "charmstore_ks_bundle_latest_downloads_month",
@@ -810,7 +765,7 @@
               "legendFormat": "Latest revision of  {{bundle}}",
               "metric": "charmstore_k8s_charm_latest_downloads_total",
               "refId": "B",
-              "step": 60
+              "step": 7200
             }
           ],
           "thresholds": [
@@ -822,7 +777,7 @@
               "value": null
             }
           ],
-          "timeFrom": null,
+          "timeFrom": "28d",
           "timeShift": null,
           "title": "Monthly adoption of bundles",
           "tooltip": {
@@ -857,7 +812,7 @@
           ]
         },
         {
-          "content": "## Latest vs all revisions\n\nBy plotting the number of deployments of the latest revision and all revisions you can see the adoption the latest release of the charms has. These metrics are reported by the charmstore. ",
+          "content": "## Latest vs all revisions\n\nBy plotting the number of deployments of the latest revision and all revisions you can see the adoption the latest release of the charms has. These metrics are reported by the charmstore.  (As reported by the Store on https://api.jujucharms.com/charmstore/v5/<charm-or-bundle>/meta/stats)",
           "id": 23,
           "links": [],
           "mode": "markdown",
@@ -881,7 +836,7 @@
         {
           "aliasColors": {},
           "bars": false,
-          "datasource": "prometheus - Juju generated source",
+          "datasource": "${DS_PROMETHEUS_- JUJU GENERATED SOURCE}",
           "fill": 1,
           "id": 8,
           "legend": {
@@ -913,11 +868,11 @@
               "legendFormat": "{{charm}}",
               "metric": "charmstore_ks_charm_downloads_week",
               "refId": "A",
-              "step": 30
+              "step": 3600
             }
           ],
           "thresholds": [],
-          "timeFrom": null,
+          "timeFrom": "28d",
           "timeShift": null,
           "title": "Charms usage weekly",
           "tooltip": {
@@ -984,7 +939,7 @@
             "rgba(237, 129, 40, 0.89)",
             "rgba(50, 172, 45, 0.97)"
           ],
-          "datasource": "prometheus - Juju generated source",
+          "datasource": "${DS_PROMETHEUS_- JUJU GENERATED SOURCE}",
           "format": "none",
           "gauge": {
             "maxValue": 100,
@@ -1035,11 +990,13 @@
               "legendFormat": "",
               "metric": "live_ks_deployments_active",
               "refId": "A",
-              "step": 600
+              "step": 43200
             }
           ],
           "thresholds": "",
-          "title": "Active Deployments",
+          "timeFrom": "28d",
+          "timeShift": null,
+          "title": "Active Deployments last 6 months",
           "type": "singlestat",
           "valueFontSize": "80%",
           "valueMaps": [
@@ -1054,7 +1011,7 @@
         {
           "aliasColors": {},
           "bars": false,
-          "datasource": "prometheus - Juju generated source",
+          "datasource": "${DS_PROMETHEUS_- JUJU GENERATED SOURCE}",
           "fill": 1,
           "id": 15,
           "legend": {
@@ -1085,7 +1042,7 @@
               "legendFormat": "LXD",
               "metric": "live_ks_deployments_active_azure",
               "refId": "A",
-              "step": 40
+              "step": 3600
             },
             {
               "expr": "live_ks_deployments_active_ec2",
@@ -1093,7 +1050,7 @@
               "legendFormat": "AWS",
               "metric": "live_ks_deployments_active_azure",
               "refId": "B",
-              "step": 40
+              "step": 3600
             },
             {
               "expr": "live_ks_deployments_active_openstack",
@@ -1101,7 +1058,7 @@
               "legendFormat": "Openstack",
               "metric": "live_ks_deployments_active_azure",
               "refId": "C",
-              "step": 40
+              "step": 3600
             },
             {
               "expr": "live_ks_deployments_active_azure",
@@ -1109,7 +1066,7 @@
               "legendFormat": "Azure",
               "metric": "live_ks_deployments_active_azure",
               "refId": "D",
-              "step": 40
+              "step": 3600
             },
             {
               "expr": "live_ks_deployments_active_gce",
@@ -1117,7 +1074,7 @@
               "legendFormat": "GCE",
               "metric": "live_ks_deployments_active_azure",
               "refId": "E",
-              "step": 40
+              "step": 3600
             },
             {
               "expr": "live_ks_deployments_active_maas",
@@ -1125,7 +1082,7 @@
               "legendFormat": "MaaS",
               "metric": "live_ks_deployments_active_azure",
               "refId": "F",
-              "step": 40
+              "step": 3600
             },
             {
               "expr": "live_ks_deployments_active_manual",
@@ -1133,13 +1090,21 @@
               "legendFormat": "Manual",
               "metric": "live_ks_deployments_active_azure",
               "refId": "G",
-              "step": 40
+              "step": 3600
+            },
+            {
+              "expr": "live_ks_deployments_active_vsphere",
+              "intervalFactor": 2,
+              "legendFormat": "VMware",
+              "metric": "live_ks_deployments_active_azure",
+              "refId": "H",
+              "step": 3600
             }
           ],
           "thresholds": [],
-          "timeFrom": null,
+          "timeFrom": "28d",
           "timeShift": null,
-          "title": "Active deployments (stacked)",
+          "title": "Active deployments last 6 months (stacked)",
           "tooltip": {
             "shared": true,
             "sort": 0,
@@ -1172,7 +1137,7 @@
           ]
         },
         {
-          "content": "## Active Deployments\n\nThis metric, gathered from the charmstore logs, shown how many deployments were active yesterday.  ",
+          "content": "## Active Deployments\n\nThis metric, gathered from the charmstore logs, shows how many deployments phoned home to ask for charm updates throughout their lifespan. ",
           "id": 25,
           "links": [],
           "mode": "markdown",
@@ -1196,7 +1161,7 @@
         {
           "aliasColors": {},
           "bars": false,
-          "datasource": "prometheus - Juju generated source",
+          "datasource": "${DS_PROMETHEUS_- JUJU GENERATED SOURCE}",
           "fill": 1,
           "id": 14,
           "legend": {
@@ -1227,7 +1192,7 @@
               "legendFormat": "LXD",
               "metric": "live_ks_deployments_lxd_one_month",
               "refId": "A",
-              "step": 60
+              "step": 7200
             },
             {
               "expr": "live_ks_deployments_ec2_one_month",
@@ -1235,7 +1200,7 @@
               "legendFormat": "AWS",
               "metric": "live_ks_deployments_active_azure",
               "refId": "B",
-              "step": 60
+              "step": 7200
             },
             {
               "expr": "live_ks_deployments_openstack_one_month",
@@ -1243,7 +1208,7 @@
               "legendFormat": "Openstack",
               "metric": "live_ks_deployments_active_azure",
               "refId": "C",
-              "step": 60
+              "step": 7200
             },
             {
               "expr": "live_ks_deployments_azure_one_month",
@@ -1251,7 +1216,7 @@
               "legendFormat": "Azure",
               "metric": "live_ks_deployments_active_azure",
               "refId": "D",
-              "step": 60
+              "step": 7200
             },
             {
               "expr": "live_ks_deployments_gce_one_month",
@@ -1259,7 +1224,7 @@
               "legendFormat": "GCE",
               "metric": "live_ks_deployments_active_azure",
               "refId": "E",
-              "step": 60
+              "step": 7200
             },
             {
               "expr": "live_ks_deployments_maas_one_month",
@@ -1267,7 +1232,7 @@
               "legendFormat": "MaaS",
               "metric": "live_ks_deployments_active_azure",
               "refId": "F",
-              "step": 60
+              "step": 7200
             },
             {
               "expr": "live_ks_deployments_manual_one_month",
@@ -1275,11 +1240,19 @@
               "legendFormat": "Manual",
               "metric": "live_ks_deployments_active_azure",
               "refId": "G",
-              "step": 60
+              "step": 7200
+            },
+            {
+              "expr": "live_ks_deployments_vsphere_one_month",
+              "intervalFactor": 2,
+              "legendFormat": "VMware",
+              "metric": "live_ks_deployments_active_azure",
+              "refId": "H",
+              "step": 7200
             }
           ],
           "thresholds": [],
-          "timeFrom": null,
+          "timeFrom": "28d",
           "timeShift": null,
           "title": "Deployments last month (stacked)",
           "tooltip": {
@@ -1316,7 +1289,7 @@
         {
           "aliasColors": {},
           "bars": false,
-          "datasource": "prometheus - Juju generated source",
+          "datasource": "${DS_PROMETHEUS_- JUJU GENERATED SOURCE}",
           "fill": 1,
           "id": 16,
           "legend": {
@@ -1347,7 +1320,7 @@
               "legendFormat": "LXD",
               "metric": "live_ks_deployments_lxd_one_month",
               "refId": "A",
-              "step": 60
+              "step": 7200
             },
             {
               "expr": "live_ks_deployments_ec2_three_months",
@@ -1355,7 +1328,7 @@
               "legendFormat": "AWS",
               "metric": "live_ks_deployments_active_azure",
               "refId": "B",
-              "step": 60
+              "step": 7200
             },
             {
               "expr": "live_ks_deployments_openstack_three_months",
@@ -1363,7 +1336,7 @@
               "legendFormat": "Openstack",
               "metric": "live_ks_deployments_active_azure",
               "refId": "C",
-              "step": 60
+              "step": 7200
             },
             {
               "expr": "live_ks_deployments_azure_three_months",
@@ -1371,7 +1344,7 @@
               "legendFormat": "Azure",
               "metric": "live_ks_deployments_active_azure",
               "refId": "D",
-              "step": 60
+              "step": 7200
             },
             {
               "expr": "live_ks_deployments_gce_three_months",
@@ -1379,7 +1352,7 @@
               "legendFormat": "GCE",
               "metric": "live_ks_deployments_active_azure",
               "refId": "E",
-              "step": 60
+              "step": 7200
             },
             {
               "expr": "live_ks_deployments_maas_three_months",
@@ -1387,7 +1360,7 @@
               "legendFormat": "MaaS",
               "metric": "live_ks_deployments_active_azure",
               "refId": "F",
-              "step": 60
+              "step": 7200
             },
             {
               "expr": "live_ks_deployments_manual_three_months",
@@ -1395,11 +1368,19 @@
               "legendFormat": "Manual",
               "metric": "live_ks_deployments_active_azure",
               "refId": "G",
-              "step": 60
+              "step": 7200
+            },
+            {
+              "expr": "live_ks_deployments_vsphere_three_months",
+              "intervalFactor": 2,
+              "legendFormat": "VMware",
+              "metric": "live_ks_deployments_active_azure",
+              "refId": "H",
+              "step": 7200
             }
           ],
           "thresholds": [],
-          "timeFrom": null,
+          "timeFrom": "28d",
           "timeShift": null,
           "title": "Deployments last 3 months (stacked)",
           "tooltip": {
@@ -1436,7 +1417,7 @@
         {
           "aliasColors": {},
           "bars": false,
-          "datasource": "prometheus - Juju generated source",
+          "datasource": "${DS_PROMETHEUS_- JUJU GENERATED SOURCE}",
           "fill": 1,
           "id": 17,
           "legend": {
@@ -1467,7 +1448,7 @@
               "legendFormat": "LXD",
               "metric": "live_ks_deployments_lxd_one_month",
               "refId": "A",
-              "step": 60
+              "step": 7200
             },
             {
               "expr": "live_ks_deployments_ec2_six_months",
@@ -1475,7 +1456,7 @@
               "legendFormat": "AWS",
               "metric": "live_ks_deployments_active_azure",
               "refId": "B",
-              "step": 60
+              "step": 7200
             },
             {
               "expr": "live_ks_deployments_openstack_six_months",
@@ -1483,7 +1464,7 @@
               "legendFormat": "Openstack",
               "metric": "live_ks_deployments_active_azure",
               "refId": "C",
-              "step": 60
+              "step": 7200
             },
             {
               "expr": "live_ks_deployments_azure_six_months",
@@ -1491,7 +1472,7 @@
               "legendFormat": "Azure",
               "metric": "live_ks_deployments_active_azure",
               "refId": "D",
-              "step": 60
+              "step": 7200
             },
             {
               "expr": "live_ks_deployments_gce_six_months",
@@ -1499,7 +1480,7 @@
               "legendFormat": "GCE",
               "metric": "live_ks_deployments_active_azure",
               "refId": "E",
-              "step": 60
+              "step": 7200
             },
             {
               "expr": "live_ks_deployments_maas_six_months",
@@ -1507,7 +1488,7 @@
               "legendFormat": "MaaS",
               "metric": "live_ks_deployments_active_azure",
               "refId": "F",
-              "step": 60
+              "step": 7200
             },
             {
               "expr": "live_ks_deployments_manual_six_months",
@@ -1515,11 +1496,19 @@
               "legendFormat": "Manual",
               "metric": "live_ks_deployments_active_azure",
               "refId": "G",
-              "step": 60
+              "step": 7200
+            },
+            {
+              "expr": "live_ks_deployments_vsphere_six_months",
+              "intervalFactor": 2,
+              "legendFormat": "VMware",
+              "metric": "live_ks_deployments_active_azure",
+              "refId": "H",
+              "step": 7200
             }
           ],
           "thresholds": [],
-          "timeFrom": null,
+          "timeFrom": "28d",
           "timeShift": null,
           "title": "Deployments last month (stacked)",
           "tooltip": {
@@ -1578,7 +1567,7 @@
         {
           "aliasColors": {},
           "bars": false,
-          "datasource": "prometheus - Juju generated source",
+          "datasource": "${DS_PROMETHEUS_- JUJU GENERATED SOURCE}",
           "fill": 1,
           "id": 18,
           "legend": {
@@ -1609,7 +1598,7 @@
               "legendFormat": "LXD",
               "metric": "live_ks_deployments_longlasting_azure_one_month",
               "refId": "A",
-              "step": 60
+              "step": 7200
             },
             {
               "expr": "live_ks_deployments_longlasting_ec2_one_month",
@@ -1617,7 +1606,7 @@
               "legendFormat": "AWS",
               "metric": "live_ks_deployments_active_azure",
               "refId": "B",
-              "step": 60
+              "step": 7200
             },
             {
               "expr": "live_ks_deployments_longlasting_openstack_one_month",
@@ -1625,7 +1614,7 @@
               "legendFormat": "Openstack",
               "metric": "live_ks_deployments_active_azure",
               "refId": "C",
-              "step": 60
+              "step": 7200
             },
             {
               "expr": "live_ks_deployments_longlasting_azure_one_month",
@@ -1633,7 +1622,7 @@
               "legendFormat": "Azure",
               "metric": "live_ks_deployments_active_azure",
               "refId": "D",
-              "step": 60
+              "step": 7200
             },
             {
               "expr": "live_ks_deployments_longlasting_gce_one_month",
@@ -1641,7 +1630,7 @@
               "legendFormat": "GCE",
               "metric": "live_ks_deployments_active_azure",
               "refId": "E",
-              "step": 60
+              "step": 7200
             },
             {
               "expr": "live_ks_deployments_longlasting_maas_one_month",
@@ -1649,7 +1638,7 @@
               "legendFormat": "MaaS",
               "metric": "live_ks_deployments_active_azure",
               "refId": "F",
-              "step": 60
+              "step": 7200
             },
             {
               "expr": "live_ks_deployments_longlasting_manual_one_month",
@@ -1657,11 +1646,19 @@
               "legendFormat": "Manual",
               "metric": "live_ks_deployments_active_azure",
               "refId": "G",
-              "step": 60
+              "step": 7200
+            },
+            {
+              "expr": "live_ks_deployments_longlasting_vsphere_one_month",
+              "intervalFactor": 2,
+              "legendFormat": "VMware",
+              "metric": "live_ks_deployments_active_azure",
+              "refId": "H",
+              "step": 7200
             }
           ],
           "thresholds": [],
-          "timeFrom": null,
+          "timeFrom": "28d",
           "timeShift": null,
           "title": "Deployments last month - life span > 2 weeks (stacked)",
           "tooltip": {
@@ -1698,7 +1695,7 @@
         {
           "aliasColors": {},
           "bars": false,
-          "datasource": "prometheus - Juju generated source",
+          "datasource": "${DS_PROMETHEUS_- JUJU GENERATED SOURCE}",
           "fill": 1,
           "id": 19,
           "legend": {
@@ -1729,7 +1726,7 @@
               "legendFormat": "LXD",
               "metric": "live_ks_deployments_longlasting_azure_one_month",
               "refId": "A",
-              "step": 60
+              "step": 7200
             },
             {
               "expr": "live_ks_deployments_longlasting_ec2_three_months",
@@ -1737,7 +1734,7 @@
               "legendFormat": "AWS",
               "metric": "live_ks_deployments_active_azure",
               "refId": "B",
-              "step": 60
+              "step": 7200
             },
             {
               "expr": "live_ks_deployments_longlasting_openstack_three_months",
@@ -1745,7 +1742,7 @@
               "legendFormat": "Openstack",
               "metric": "live_ks_deployments_active_azure",
               "refId": "C",
-              "step": 60
+              "step": 7200
             },
             {
               "expr": "live_ks_deployments_longlasting_azure_three_months",
@@ -1753,7 +1750,7 @@
               "legendFormat": "Azure",
               "metric": "live_ks_deployments_active_azure",
               "refId": "D",
-              "step": 60
+              "step": 7200
             },
             {
               "expr": "live_ks_deployments_longlasting_gce_three_months",
@@ -1761,7 +1758,7 @@
               "legendFormat": "GCE",
               "metric": "live_ks_deployments_active_azure",
               "refId": "E",
-              "step": 60
+              "step": 7200
             },
             {
               "expr": "live_ks_deployments_longlasting_maas_three_months",
@@ -1769,7 +1766,7 @@
               "legendFormat": "MaaS",
               "metric": "live_ks_deployments_active_azure",
               "refId": "F",
-              "step": 60
+              "step": 7200
             },
             {
               "expr": "live_ks_deployments_longlasting_manual_three_months",
@@ -1777,11 +1774,19 @@
               "legendFormat": "Manual",
               "metric": "live_ks_deployments_active_azure",
               "refId": "G",
-              "step": 60
+              "step": 7200
+            },
+            {
+              "expr": "live_ks_deployments_longlasting_vsphere_three_months",
+              "intervalFactor": 2,
+              "legendFormat": "VMware",
+              "metric": "live_ks_deployments_active_azure",
+              "refId": "H",
+              "step": 7200
             }
           ],
           "thresholds": [],
-          "timeFrom": null,
+          "timeFrom": "28d",
           "timeShift": null,
           "title": "Deployments last 3 months - life span > 2 weeks (stacked)",
           "tooltip": {
@@ -1818,7 +1823,7 @@
         {
           "aliasColors": {},
           "bars": false,
-          "datasource": "prometheus - Juju generated source",
+          "datasource": "${DS_PROMETHEUS_- JUJU GENERATED SOURCE}",
           "fill": 1,
           "id": 20,
           "legend": {
@@ -1849,7 +1854,7 @@
               "legendFormat": "LXD",
               "metric": "live_ks_deployments_longlasting_azure_one_month",
               "refId": "A",
-              "step": 60
+              "step": 7200
             },
             {
               "expr": "live_ks_deployments_longlasting_ec2_six_months",
@@ -1857,7 +1862,7 @@
               "legendFormat": "AWS",
               "metric": "live_ks_deployments_active_azure",
               "refId": "B",
-              "step": 60
+              "step": 7200
             },
             {
               "expr": "live_ks_deployments_longlasting_openstack_six_months",
@@ -1865,7 +1870,7 @@
               "legendFormat": "Openstack",
               "metric": "live_ks_deployments_active_azure",
               "refId": "C",
-              "step": 60
+              "step": 7200
             },
             {
               "expr": "live_ks_deployments_longlasting_azure_six_months",
@@ -1873,7 +1878,7 @@
               "legendFormat": "Azure",
               "metric": "live_ks_deployments_active_azure",
               "refId": "D",
-              "step": 60
+              "step": 7200
             },
             {
               "expr": "live_ks_deployments_longlasting_gce_six_months",
@@ -1881,7 +1886,7 @@
               "legendFormat": "GCE",
               "metric": "live_ks_deployments_active_azure",
               "refId": "E",
-              "step": 60
+              "step": 7200
             },
             {
               "expr": "live_ks_deployments_longlasting_maas_six_months",
@@ -1889,7 +1894,7 @@
               "legendFormat": "MaaS",
               "metric": "live_ks_deployments_active_azure",
               "refId": "F",
-              "step": 60
+              "step": 7200
             },
             {
               "expr": "live_ks_deployments_longlasting_manual_six_months",
@@ -1897,11 +1902,19 @@
               "legendFormat": "Manual",
               "metric": "live_ks_deployments_active_azure",
               "refId": "G",
-              "step": 60
+              "step": 7200
+            },
+            {
+              "expr": "live_ks_deployments_longlasting_vsphere_six_months",
+              "intervalFactor": 2,
+              "legendFormat": "VMware",
+              "metric": "live_ks_deployments_active_azure",
+              "refId": "H",
+              "step": 7200
             }
           ],
           "thresholds": [],
-          "timeFrom": null,
+          "timeFrom": "28d",
           "timeShift": null,
           "title": "Deployments last six months - life span > 2 weeks (stacked)",
           "tooltip": {
@@ -1988,5 +2001,5 @@
   },
   "timezone": "browser",
   "title": "Kubernetes Stats",
-  "version": 12
+  "version": 42
 }
