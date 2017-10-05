@@ -93,27 +93,32 @@ def find_metadata(l, date):
     return found
 
 
-def register_active_data(registry, data):
-    active_gauge = Gauge(
-        'live_ks_deployments_active',
-        'Active deployment in all clouds',
-        ['active'],
-        registry=registry,
-    )
-    active_deps_num = len(list(filter(lambda deployment: deployment['active'] == True, data)))
-    active_gauge.labels('True').set(active_deps_num)
-
+def register_online_deployments(registry, data):
     for cloud in clouds:
-        active_in_cloud = Gauge(
-            'live_ks_deployments_active_{}'.format(cloud),
-            'Active deployments in {}'.format(cloud),
-            ['active'],
+        online_in_cloud = Gauge(
+            'live_ks_deployments_online_on_{}_cloud'.format(cloud),
+            'Online deployments in {}'.format(cloud),
+            ['cloud'],
             registry=registry,
         )
-        active_cloud_deps_num = len(list(filter(lambda deployment:
-                                          deployment['active'] == True and
+        online_cloud_deps_num = len(list(filter(lambda deployment:
+                                          deployment['online'] == True and
                                           deployment['cloud'] == cloud, data)))
-        active_in_cloud.labels('True').set(active_cloud_deps_num)
+        online_in_cloud.labels(cloud).set(online_cloud_deps_num)
+
+
+def register_age_deployments(registry, data):
+    online_age = Gauge(
+        'live_ks_age_online_deployments',
+        'Age of online deployments',
+        ['online'],
+        registry=registry,
+    )
+    for age in range(1,180):
+        online_age_deps_num = len(list(filter(lambda deployment:
+                                          deployment['online'] == True and
+                                          deployment['days'] == age, data)))
+        online_age.labels(age).set(online_age_deps_num)
 
 
 def register_period(registry, data, label):
@@ -154,6 +159,7 @@ def register_period(registry, data, label):
 
 def main():
 
+    lastlogdate = datetime.strptime("20000101", '%Y%m%d')
     for g in logs:
         print("Found logs {0}".format(len(g)))
         for path in g:
@@ -164,6 +170,9 @@ def main():
                 replace('.anon', '').\
                 replace('.gz', '')
             print("Date {}".format(datestr))
+            processingdate = datetime.strptime(datestr, '%Y%m%d')
+            if processingdate > lastlogdate:
+                lastlogdate = processingdate
             try:
                 with gzip.open(path) as f:
                     lines = f.read().split("\n")
@@ -199,14 +208,13 @@ def main():
     three_month_dataset = []
     six_month_dataset = []
     for uuid, data in apps.items():
-        lastdate = datetime.strptime(datestr, '%Y%m%d')
         start = datetime.strptime(data['start'], '%Y%m%d')
         end = datetime.strptime(data['end'], '%Y%m%d')
         days = (end - start).days + 1
-        if (lastdate - end).days > 1:
-            data['active'] = False
+        if (lastlogdate - end).days > 0:
+            data['online'] = False
         else:
-            data['active'] = True
+            data['online'] = True
         data['days'] = days
 
         today = datetime.now()
@@ -218,7 +226,8 @@ def main():
             month_dataset.append(data)
         print("{} {}".format(uuid, data))
 
-    register_active_data(registry, list(apps.values()))
+    register_age_deployments(registry, list(apps.values()))
+    register_online_deployments(registry, list(apps.values()))
     register_period(registry, six_month_dataset, "six_months")
     register_period(registry, three_month_dataset, "three_months")
     register_period(registry, month_dataset, "one_month")

@@ -44,10 +44,11 @@
   "annotations": {
     "list": []
   },
+  "editMode": false,
   "editable": true,
   "gnetId": null,
   "graphTooltip": 0,
-  "hideControls": true,
+  "hideControls": false,
   "id": null,
   "links": [
     {
@@ -619,6 +620,91 @@
     },
     {
       "collapse": false,
+      "height": 250,
+      "panels": [
+        {
+          "aliasColors": {},
+          "bars": true,
+          "datasource": "${DS_PROMETHEUS_- JUJU GENERATED SOURCE}",
+          "description": "Bundle Downloads per Day",
+          "fill": 1,
+          "id": 31,
+          "legend": {
+            "avg": false,
+            "current": false,
+            "max": false,
+            "min": false,
+            "show": true,
+            "total": false,
+            "values": false
+          },
+          "lines": false,
+          "linewidth": 1,
+          "links": [],
+          "nullPointMode": "null",
+          "percentage": false,
+          "pointradius": 5,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [],
+          "span": 12,
+          "stack": true,
+          "steppedLine": false,
+          "targets": [
+            {
+              "expr": "delta(charmstore_ks_bundle_downloads_total{} [1d])",
+              "interval": "1d",
+              "intervalFactor": 2,
+              "legendFormat": "{{bundle}}",
+              "refId": "A",
+              "step": 172800
+            }
+          ],
+          "thresholds": [],
+          "timeFrom": "90d",
+          "timeShift": null,
+          "title": "Bundle Downloads per Day",
+          "tooltip": {
+            "shared": true,
+            "sort": 0,
+            "value_type": "individual"
+          },
+          "type": "graph",
+          "xaxis": {
+            "mode": "time",
+            "name": null,
+            "show": true,
+            "values": []
+          },
+          "yaxes": [
+            {
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            },
+            {
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            }
+          ]
+        }
+      ],
+      "repeat": null,
+      "repeatIteration": null,
+      "repeatRowId": null,
+      "showTitle": false,
+      "title": "Bundles per day",
+      "titleSize": "h6"
+    },
+    {
+      "collapse": false,
       "height": 280,
       "panels": [
         {
@@ -866,7 +952,7 @@
               "expr": "charmstore_ks_charm_downloads_week",
               "intervalFactor": 2,
               "legendFormat": "{{charm}}",
-              "metric": "charmstore_ks_charm_downloads_week",
+              "metric": "",
               "refId": "A",
               "step": 3600
             }
@@ -985,7 +1071,7 @@
           },
           "targets": [
             {
-              "expr": "live_ks_deployments_active",
+              "expr": "sum(live_ks_age_online_deployments)",
               "intervalFactor": 2,
               "legendFormat": "",
               "metric": "live_ks_deployments_active",
@@ -1137,7 +1223,7 @@
           ]
         },
         {
-          "content": "## Active Deployments\n\nThis metric, gathered from the charmstore logs, shows how many deployments phoned home to ask for charm updates throughout their lifespan. ",
+          "content": "## Online Deployments\n\nNumber of new deployments or deployments contacting the store for updates.  ",
           "id": 25,
           "links": [],
           "mode": "markdown",
@@ -1965,6 +2051,272 @@
       "showTitle": true,
       "title": "Long lasting deployments over time",
       "titleSize": "h6"
+    },
+    {
+      "collapse": false,
+      "height": 250,
+      "panels": [
+        {
+          "aliasColors": {},
+          "bars": false,
+          "datasource": "${DS_PROMETHEUS_- JUJU GENERATED SOURCE}",
+          "fill": 1,
+          "id": 28,
+          "legend": {
+            "avg": false,
+            "current": false,
+            "max": false,
+            "min": false,
+            "show": true,
+            "total": false,
+            "values": false
+          },
+          "lines": true,
+          "linewidth": 1,
+          "links": [],
+          "nullPointMode": "null",
+          "percentage": false,
+          "pointradius": 5,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [],
+          "span": 12,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "expr": "delta(charmstore_ks_charm_downloads_total{} [1d])",
+              "interval": "1d",
+              "intervalFactor": 1,
+              "legendFormat": "{{charm}}",
+              "metric": "charmstore_ks_charm_downloads_total",
+              "refId": "A",
+              "step": 86400
+            }
+          ],
+          "thresholds": [],
+          "timeFrom": "28d",
+          "timeShift": null,
+          "title": "Daily downloads per charm",
+          "tooltip": {
+            "shared": true,
+            "sort": 0,
+            "value_type": "individual"
+          },
+          "type": "graph",
+          "xaxis": {
+            "mode": "time",
+            "name": null,
+            "show": true,
+            "values": []
+          },
+          "yaxes": [
+            {
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            },
+            {
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            }
+          ]
+        }
+      ],
+      "repeat": null,
+      "repeatIteration": null,
+      "repeatRowId": null,
+      "showTitle": false,
+      "title": "Dashboard Row",
+      "titleSize": "h6"
+    },
+    {
+      "collapse": false,
+      "height": 250,
+      "panels": [
+        {
+          "aliasColors": {},
+          "bars": true,
+          "datasource": "${DS_PROMETHEUS_- JUJU GENERATED SOURCE}",
+          "fill": 1,
+          "id": 29,
+          "legend": {
+            "avg": false,
+            "current": true,
+            "max": false,
+            "min": false,
+            "show": false,
+            "total": false,
+            "values": true
+          },
+          "lines": false,
+          "linewidth": 1,
+          "links": [],
+          "nullPointMode": "null",
+          "percentage": false,
+          "pointradius": 5,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [
+            {}
+          ],
+          "span": 12,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "expr": "live_ks_age_online_deployments{online=~\".?\"} ",
+              "hide": false,
+              "intervalFactor": 1,
+              "legendFormat": "{{online}}",
+              "metric": "live_ks_age_online_deployments",
+              "refId": "A",
+              "step": 10
+            },
+            {
+              "expr": "live_ks_age_online_deployments{online=~\"[1-9][0-9]\"} ",
+              "intervalFactor": 1,
+              "legendFormat": "{{online}}",
+              "metric": "live_ks_age_online_deployments",
+              "refId": "B",
+              "step": 10
+            }
+          ],
+          "thresholds": [],
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "Deployments age in days",
+          "tooltip": {
+            "shared": false,
+            "sort": 0,
+            "value_type": "individual"
+          },
+          "type": "graph",
+          "xaxis": {
+            "mode": "series",
+            "name": null,
+            "show": true,
+            "values": [
+              "current"
+            ]
+          },
+          "yaxes": [
+            {
+              "format": "short",
+              "label": "Deployments",
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            },
+            {
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            }
+          ]
+        }
+      ],
+      "repeat": null,
+      "repeatIteration": null,
+      "repeatRowId": null,
+      "showTitle": false,
+      "title": "Deployment Age",
+      "titleSize": "h6"
+    },
+    {
+      "collapse": false,
+      "height": 250,
+      "panels": [
+        {
+          "aliasColors": {},
+          "bars": false,
+          "datasource": "${DS_PROMETHEUS_- JUJU GENERATED SOURCE}",
+          "fill": 1,
+          "id": 30,
+          "legend": {
+            "avg": false,
+            "current": true,
+            "max": false,
+            "min": false,
+            "show": true,
+            "total": false,
+            "values": true
+          },
+          "lines": true,
+          "linewidth": 1,
+          "links": [],
+          "nullPointMode": "null",
+          "percentage": false,
+          "pointradius": 5,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [],
+          "span": 12,
+          "stack": true,
+          "steppedLine": false,
+          "targets": [
+            {
+              "expr": "{__name__=~\"live_ks_deployments_online_on_.*cloud\"}",
+              "intervalFactor": 2,
+              "legendFormat": "{{cloud}}",
+              "metric": "live_ks_deployments_online_on_lxd_cloudd",
+              "refId": "A",
+              "step": 2400
+            }
+          ],
+          "thresholds": [],
+          "timeFrom": "28d",
+          "timeShift": null,
+          "title": "Deployments per cloud",
+          "tooltip": {
+            "shared": true,
+            "sort": 0,
+            "value_type": "individual"
+          },
+          "type": "graph",
+          "xaxis": {
+            "mode": "time",
+            "name": null,
+            "show": true,
+            "values": []
+          },
+          "yaxes": [
+            {
+              "format": "short",
+              "label": "Deployments",
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            },
+            {
+              "format": "short",
+              "label": "",
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            }
+          ]
+        }
+      ],
+      "repeat": null,
+      "repeatIteration": null,
+      "repeatRowId": null,
+      "showTitle": false,
+      "title": "Deployments per cloud",
+      "titleSize": "h6"
     }
   ],
   "schemaVersion": 14,
@@ -2001,5 +2353,5 @@
   },
   "timezone": "browser",
   "title": "Kubernetes Stats",
-  "version": 42
+  "version": 50
 }

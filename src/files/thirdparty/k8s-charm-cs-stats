@@ -33,6 +33,12 @@ def gather_items_stats(registry, items, type='charm'):
         [type],
         registry=registry,
     )
+    day_gauge_latest = Gauge(
+        'charmstore_ks_{}_latest_downloads_day'.format(type),
+        'Total number of latest revision downloads for a {} (day)'.format(type),
+        [type],
+        registry=registry,
+    )
 
     total_gauge = Gauge(
         'charmstore_ks_{}_downloads_total'.format(type),
@@ -52,6 +58,12 @@ def gather_items_stats(registry, items, type='charm'):
         [type],
         registry=registry,
     )
+    day_gauge = Gauge(
+        'charmstore_ks_{}_downloads_day'.format(type),
+        'Total number of {} downloads for a {} (day)'.format(type, type),
+        [type],
+        registry=registry,
+    )
 
     http = urllib3.PoolManager()
 
@@ -63,10 +75,11 @@ def gather_items_stats(registry, items, type='charm'):
             total_gauge.labels(item).set(stats['ArchiveDownloadAllRevisions']['Total'])
             week_gauge.labels(item).set(stats['ArchiveDownloadAllRevisions']['Week'])
             month_gauge.labels(item).set(stats['ArchiveDownloadAllRevisions']['Month'])
+            day_gauge.labels(item).set(stats['ArchiveDownloadAllRevisions']['Day'])
             total_gauge_latest.labels(item).set(stats['ArchiveDownload']['Total'])
             week_gauge_latest.labels(item).set(stats['ArchiveDownload']['Week'])
             month_gauge_latest.labels(item).set(stats['ArchiveDownload']['Month'])
-
+            day_gauge_latest.labels(item).set(stats['ArchiveDownload']['Day'])
 
 charms = [
     '~containers/kubernetes-master',
@@ -76,12 +89,16 @@ charms = [
     '~containers/flannel',
     '~containers/canal',
     '~containers/easyrsa',
+    '~containers/calico',
+    '~containers/kubernetes-e2e',
 ]
 
 bundles = [
     'canonical-kubernetes',
     'kubernetes-core',
     'canonical-kubernetes-canal',
+    'kubernetes-calico',
+    'canonical-kubernetes-elastic'
 ]
 
 if __name__ == "__main__":
