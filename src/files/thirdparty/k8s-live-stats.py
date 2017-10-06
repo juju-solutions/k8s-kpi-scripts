@@ -27,7 +27,7 @@ uuid_re = 'environment_uuid=[\w]{8}-[\w]{4}-[\w]{4}-[\w]{4}-[\w]{12}'
 cloud_re = 'provider=[^,\"]*'
 region_re = 'cloud_region=[^,\"]*'
 version_re = 'controller_version=[^,\"]*'
-app_re = 'meta/any\?id=[\w][^&]*'
+app_re = '[&?]id=[^&,\"]*'
 apps = defaultdict(list)
 running = {}
 
