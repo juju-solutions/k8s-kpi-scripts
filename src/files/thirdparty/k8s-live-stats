@@ -11,8 +11,8 @@ mkdir -p /var/tmp/logs/api/2
 source ~/.nova
 
 echo "Removing old log files"
-swift list production-juju-ps45-cdo-jujucharms-machine-1.canonical.com | grep 201 | grep api.jujucharms.com.log | tail -n $MAXITEMS > /var/tmp/logs/api/max-logs1.list
-swift list production-juju-ps45-cdo-jujucharms-machine-2.canonical.com | grep 201 | grep api.jujucharms.com.log | tail -n $MAXITEMS > /var/tmp/logs/api/max-logs2.list
+swift list production-juju-ps45-cdo-jujucharms-machine-1.canonical.com | grep 201 | grep api.jujucharms.com.log | grep '\.anon\.gz$' | tail -n $MAXITEMS > /var/tmp/logs/api/max-logs1.list
+swift list production-juju-ps45-cdo-jujucharms-machine-2.canonical.com | grep 201 | grep api.jujucharms.com.log | grep '\.anon\.gz$' | tail -n $MAXITEMS > /var/tmp/logs/api/max-logs2.list
 cd /var/tmp/logs/api/1
 ls -1 *.gz > ../all-files1.list
 sort ../all-files1.list ../max-logs1.list ../max-logs1.list | uniq -u | xargs rm -f
@@ -21,8 +21,8 @@ ls -1 *.gz > ../all-files2.list
 sort ../all-files2.list ../max-logs2.list ../max-logs2.list | uniq -u | xargs rm -f
 
 echo "Downloading log files"
-swift list production-juju-ps45-cdo-jujucharms-machine-1.canonical.com | grep 201 | grep api.jujucharms.com.log | tail -n $ITEMS > /var/tmp/logs/api/logs1.list
-swift list production-juju-ps45-cdo-jujucharms-machine-2.canonical.com | grep 201 | grep api.jujucharms.com.log | tail -n $ITEMS > /var/tmp/logs/api/logs2.list
+swift list production-juju-ps45-cdo-jujucharms-machine-1.canonical.com | grep 201 | grep api.jujucharms.com.log | grep '\.anon\.gz$' | tail -n $ITEMS > /var/tmp/logs/api/logs1.list
+swift list production-juju-ps45-cdo-jujucharms-machine-2.canonical.com | grep 201 | grep api.jujucharms.com.log | grep '\.anon\.gz$' | tail -n $ITEMS > /var/tmp/logs/api/logs2.list
 echo "Downloading log files using get.sh"
 
 FILES=`cat /var/tmp/logs/api/logs1.list`
