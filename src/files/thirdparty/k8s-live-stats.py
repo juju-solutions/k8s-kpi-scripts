@@ -14,8 +14,8 @@ from prometheus_client import CollectorRegistry, Gauge, push_to_gateway
 
 
 logs = [
-    glob.glob('/var/tmp/logs/api/1/api.jujucharms.com.log-201*'),
-    glob.glob('/var/tmp/logs/api/2/api.jujucharms.com.log-201*'),
+    glob.glob('/var/tmp/logs/api/1/api.jujucharms.com.log-201*.anon.gz'),
+    glob.glob('/var/tmp/logs/api/2/api.jujucharms.com.log-201*.anon.gz'),
 ]
 
 clouds = ['maas', 'ec2', 'azure', 'gce', 'lxd', 'openstack', 'manual', 'vsphere']
